@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">POLYNOMIAL ADDER</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          </div>
+        </div>
+      </nav>
+<form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    <div class="form-group">
+  <label class="col-form-label mt-4" for="inputDefault">Equation X</label>
+  <input type="text" class="form-control" placeholder="Enter the equation X: (Ex:2x^2+2x^0)" id="inputDefault" fdprocessedid="kr8jh" name="num1" required>
+    <label class="col-form-label mt-4" for="inputDefault">Equation Y</label>
+      <input type="text" class="form-control" placeholder="Enter the equation X: (Ex:2x^2+2x^0)" id="inputDefault" fdprocessedid="kr8jh" name="num2" required>
+
+   <button class="btn btn-dark" fdprocessedid="87946e" type="submit" style="margin-top:20px;margin-left:300px">Add</button>
+</div>
+</form>
+
+{% if result %}
+   <div class="card text-white bg-primary mb-3" style="max-width: 50rem;margin-top:30px;margin-left:300px">
+  <div class="card-header">Result</div>
+  <div class="card-body">
+    <h6 class="card-title">Equation X = {{equation1}}</h6>
+      <h6 class="card-title">Equation Y = {{equation2}}</h6>
+    <h4 class="card-title">Equation X + Equation Y = {{result}}</h4>
+
+  </div>
+</div>
+{% endif %}
+</body>
+</html>
